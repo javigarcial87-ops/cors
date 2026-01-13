@@ -8,7 +8,7 @@ function getCharacterInfo() {
         return
     }
 
-    fetch (`http://localhost:3002/characters/${characterName}`)
+    fetch (`http://localhost:3000/characters/${characterName}`)
     .then(response => {
             if (!response.ok) {
                 throw new Error('Personaje no encontrado') 
