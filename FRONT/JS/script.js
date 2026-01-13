@@ -22,10 +22,10 @@ function getCharacterInfo() {
         
     <h2>${name}</h2>
     <img src="${image}" alt="${image}">
-    <p>STATUS: ${status}</p>
+    <p>STATUS:  ${status}</p>
     <p>SPECIES: ${species}</p>
-    <p>GENDER: ${gender}</p>
-    <p>ORIGIN ${origin}</p>
+    <p>GENDER:  ${gender}</p>
+    <p>ORIGIN:  ${origin}</p>
         
     `
     })
