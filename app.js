@@ -21,22 +21,23 @@ app.get("/characters", async(req, res)=>{
     }
 })
 
-app.get('/characters/:name',async (req,res)=>{
-    const characterName = req.params.characterName
-    const url = `https://rickandmortyapi.com/api/character/${characterName}`
+app.get('/characters/:name', async (req, res) => {
+  const characterName = req.params.name
 
-    try {
-        const response = await axios.get (url)
-        const {name, status, species, gender, origin, image} = response.data
-    }catch(ERROR){
+  try {
+    const response = await axios.get(
+      `https://rickandmortyapi.com/api/character/?name=${characterName}`
+    )
 
-    }
+    const { name, status, species, gender, origin, image } =
+      response.data.results[0]
 
+    res.json({name,status,species,gender,origin:origin.name,image})
 
-
-
+  } catch (error) {
+    res.status(404).json({error: 'Personaje no encontrado'})
+  }
 })
-
 
 
 
