@@ -41,8 +41,8 @@ app.get('/characters/:name', async (req, res) => {
 
 
 
-app.listen (4000, ()=>{
-    console.log('express esta funcionando en el puerto http://localhost:4000')
+app.listen (3002, ()=>{
+    console.log('express esta funcionando en el puerto http://localhost:3002')
 })
 
 
