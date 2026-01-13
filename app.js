@@ -6,12 +6,12 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const URL = "https://rickandmortyapi.com/api/character"
+const url = "https://rickandmortyapi.com/api/character"
 
 
 app.get("/characters", async(req, res)=>{
     try {
-        const response = await axios.get(URL)
+        const response = await axios.get(url)
         res.json(response.data.results)
         
     } catch(error) {
@@ -20,6 +20,24 @@ app.get("/characters", async(req, res)=>{
         })
     }
 })
+
+app.get('/characters/:name',async (req,res)=>{
+    const characterName = req.params.characterName
+    const url = `https://rickandmortyapi.com/api/character/${characterName}`
+
+    try {
+        const response = await axios.get (url)
+        const {name, status, species, gender, origin, image} = response.data
+    }catch(ERROR){
+
+    }
+
+
+
+
+})
+
+
 
 
 app.listen (4000, ()=>{
