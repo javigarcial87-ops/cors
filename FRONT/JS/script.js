@@ -3,9 +3,18 @@ function getCharacterInfo() {
     const characterInfo = document.getElementById('characterInfo')
 
     const characterName = characterNameInput.value.toLocaleLowerCase()
+     if(!characterName){
+        characterInfo.innerHTML = `<p>Escribe algo aquí</p>`
+        return
+    }
 
     fetch (`http://localhost:3002/characters/${characterName}`)
-    .then (response => response.json)
+    .then(response => {
+            if (!response.ok) {
+                throw new Error('Personaje no encontrado') 
+            }
+            return response.json()
+        })
     .then(data => {
         const {name,status,species,gender,origin,image}= data
 
@@ -13,13 +22,15 @@ function getCharacterInfo() {
         
     <h2>${name}</h2>
     <img src="${image}" alt="${image}">
-    <p>${status}</p>
-    <p>${species}</p>
-    <p>${gender}</p>
-    <p>${origin}</p>
+    <p>STATUS: ${status}</p>
+    <p>SPECIES: ${species}</p>
+    <p>GENDER: ${gender}</p>
+    <p>ORIGIN ${origin}</p>
         
     `
     })
-    .catch(error => characterInfo.innerHTML = `<p>no se puede acceder al personaje</p>`)
+    .catch(error => {
+            characterInfo.innerHTML = `<p>personaje no encontrado</p>`
+        })
 
 }
