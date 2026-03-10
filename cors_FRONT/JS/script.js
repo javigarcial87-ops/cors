@@ -4,7 +4,7 @@ function getCharacterInfo() {
 
     const characterName = characterNameInput.value.toLocaleLowerCase()
      if(!characterName){
-        characterInfo.innerHTML = `<p>Escribe algo aquí</p>`
+        characterInfo.innerHTML = `<p>Escribe algo en el campo de texto</p>`
         return
     }
 
